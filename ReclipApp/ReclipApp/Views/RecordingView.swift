@@ -5,11 +5,11 @@ struct RecordingView: View {
     @ObservedObject var recorder: AudioRecorderManager
     var onClipSaved: (URL, [CaptionSegment]) -> Void
 
-    @State private var showPermissionModal = false
     @State private var errorMessage: String?
     @State private var showToast = false
     @State private var toastMessage = ""
-    @State private var pulseTimer: Timer?
+    @State private var sweepAngle: Double = 0
+    @State private var sweepTimer: Timer?
 
     private let accentColor = Color(hex: "#DAFC79")
 
@@ -17,137 +17,275 @@ struct RecordingView: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                // Navigation bar
-                HStack {
-                    ReclipLogoView()
-                    Spacer()
-                    if recorder.isRecording {
-                        recordingIndicator
-                    }
-                }
-                .padding(.horizontal, 24)
+            if !recorder.permissionGranted {
+                prePermissionLayout
+            } else {
+                recordingLayout
+            }
+
+            ToastOverlay(isShowing: $showToast, message: toastMessage)
+        }
+        .animation(.easeInOut(duration: 0.3), value: recorder.permissionGranted)
+        .animation(.easeInOut(duration: 0.2), value: recorder.isRecording)
+        .onAppear { startSweep() }
+        .onDisappear { sweepTimer?.invalidate() }
+    }
+
+    // MARK: - Pre-permission layout (Screen 4)
+
+    private var prePermissionLayout: some View {
+        VStack(spacing: 0) {
+            // Centered logo
+            ReclipLogoView()
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 20)
+
+            Spacer()
+
+            // Inactive waveform illustration
+            inactiveWaveform
+                .frame(height: 260)
+
+            Spacer()
+
+            // Title
+            Text("CLIP IT\nBEFORE YOU\nMISS IT!")
+                .font(.system(size: 52, weight: .black))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 28)
+
+            // Subtitle
+            Text("Save up to 2 mins of audio.\nThe jokes, The cap, The receipts. Clipped 🎤✨")
+                .font(.system(size: 16))
+                .foregroundColor(.white.opacity(0.55))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
                 .padding(.top, 16)
 
-                Spacer()
+            Spacer()
 
-                // Circular waveform
-                CircularWaveformView(
-                    levels: recorder.audioLevels,
-                    isActive: recorder.isRecording,
-                    size: 260
-                )
-                .overlay(
-                    VStack(spacing: 4) {
-                        if recorder.isRecording {
-                            Text(formatDuration(recorder.bufferSeconds))
-                                .font(.system(size: 32, weight: .black, design: .monospaced))
-                                .foregroundColor(.white)
-                            Text("buffered")
-                                .font(.system(size: 13))
-                                .foregroundColor(.white.opacity(0.5))
-                        } else {
-                            Text("Tap to record")
-                                .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(.white.opacity(0.6))
-                        }
-                    }
-                )
-
-                Spacer()
-
-                // Instructions
-                Text(recorder.isRecording
-                     ? "Speak naturally — we're buffering the last 2 minutes"
-                     : "Start recording to build your audio buffer")
-                    .font(.system(size: 14))
-                    .foregroundColor(.white.opacity(0.5))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 32)
-                    .padding(.bottom, 32)
-
-                // Action buttons
-                HStack(spacing: 32) {
-                    if recorder.isRecording {
-                        // Stop button
-                        Button(action: stopRecording) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.white.opacity(0.12))
-                                    .frame(width: 60, height: 60)
-                                Image(systemName: "stop.fill")
-                                    .font(.system(size: 22))
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-
-                    // Main clip/record button
-                    ClipButtonView(
-                        label: recorder.isRecording ? "Clip" : "Start",
-                        isRecording: recorder.isRecording
-                    ) {
-                        if recorder.isRecording {
-                            clipAudio()
-                        } else {
-                            startRecording()
-                        }
-                    }
-
-                    if recorder.isRecording {
-                        // Share button placeholder
-                        Button(action: {}) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.white.opacity(0.12))
-                                    .frame(width: 60, height: 60)
-                                Image(systemName: "square.and.arrow.up")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.white.opacity(0.5))
-                            }
-                        }
-                        .disabled(true)
-                    }
+            // Turn on your mic button
+            Button(action: requestPermission) {
+                HStack(spacing: 10) {
+                    Image(systemName: "mic.fill")
+                        .font(.system(size: 17))
+                    Text("Turn on your mic")
+                        .font(.system(size: 18, weight: .bold))
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 15, weight: .bold))
                 }
-                .padding(.bottom, 60)
+                .frame(maxWidth: .infinity)
+                .frame(height: 58)
+                .background(accentColor)
+                .foregroundColor(.black)
+                .clipShape(Capsule())
             }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 44)
+        }
+    }
 
-            // Toast overlay
-            ToastOverlay(isShowing: $showToast, message: toastMessage)
+    // MARK: - Recording layout (Screen 5)
 
-            // Permission modal
-            if showPermissionModal {
-                MicPermissionModal(
-                    onAllow: requestPermission,
-                    onDismiss: { showPermissionModal = false }
-                )
-                .transition(.opacity)
+    private var recordingLayout: some View {
+        VStack(spacing: 0) {
+            // Centered logo
+            ReclipLogoView()
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 20)
+
+            // Lime green headline
+            Text("SAY SOMETHING,\nANYTHING!")
+                .font(.system(size: 44, weight: .black))
+                .foregroundColor(accentColor)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 28)
+                .padding(.top, 20)
+
+            // Recording status badge
+            recordingBadge
+                .padding(.top, 14)
+
+            Spacer()
+
+            // Large circular clip button
+            largeCircularButton
+
+            Spacer()
+
+            // Bottom instruction
+            HStack(spacing: 4) {
+                Text("TAP")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(.white.opacity(0.45))
+                Image(systemName: "arrow.counterclockwise")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.white.opacity(0.45))
+                Text("ABOVE TO")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(.white.opacity(0.45))
+                Text("CLIP")
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(accentColor)
+            }
+            .padding(.bottom, 40)
+        }
+    }
+
+    // MARK: - Inactive waveform (pre-permission illustration)
+
+    private var inactiveWaveform: some View {
+        ZStack {
+            Circle()
+                .stroke(Color.white.opacity(0.04), lineWidth: 1)
+                .frame(width: 258, height: 258)
+            Circle()
+                .stroke(Color.white.opacity(0.06), lineWidth: 1)
+                .frame(width: 218, height: 218)
+            Circle()
+                .stroke(Color.white.opacity(0.09), lineWidth: 1)
+                .frame(width: 178, height: 178)
+
+            // Static tick marks
+            Canvas { context, size in
+                let center = CGPoint(x: size.width / 2, y: size.height / 2)
+                let radius: CGFloat = 78
+                let count = 48
+                for i in 0..<count {
+                    let angle = (Double(i) / Double(count)) * 2 * .pi - .pi / 2
+                    let tickLen: CGFloat = i % 4 == 0 ? 14 : 8
+                    let s = CGPoint(x: center.x + cos(angle) * (radius - tickLen / 2),
+                                    y: center.y + sin(angle) * (radius - tickLen / 2))
+                    let e = CGPoint(x: center.x + cos(angle) * (radius + tickLen / 2),
+                                    y: center.y + sin(angle) * (radius + tickLen / 2))
+                    var p = Path()
+                    p.move(to: s)
+                    p.addLine(to: e)
+                    context.stroke(p, with: .color(Color(hex: "#DAFC79").opacity(0.35)), lineWidth: 1.5)
+                }
+
+                // Sweep line (animated)
+                let sa = sweepAngle * 2 * .pi - .pi / 2
+                var sweep = Path()
+                sweep.move(to: center)
+                sweep.addLine(to: CGPoint(x: center.x + cos(sa) * radius,
+                                          y: center.y + sin(sa) * radius))
+                context.stroke(sweep, with: .color(Color(red: 0.25, green: 0.65, blue: 1.0, opacity: 0.7)), lineWidth: 2)
+            }
+            .frame(width: 190, height: 190)
+
+            // Dark center
+            Circle()
+                .fill(Color(white: 0.04))
+                .frame(width: 110, height: 110)
+                .overlay(Circle().stroke(Color.white.opacity(0.08), lineWidth: 1))
+        }
+    }
+
+    // MARK: - Large circular clip button
+
+    private var largeCircularButton: some View {
+        Button(action: handleButtonTap) {
+            ZStack {
+                // Outer faint rings
+                Circle()
+                    .stroke(Color.white.opacity(0.04), lineWidth: 1)
+                    .frame(width: 286, height: 286)
+                Circle()
+                    .stroke(Color.white.opacity(0.06), lineWidth: 1)
+                    .frame(width: 248, height: 248)
+                Circle()
+                    .stroke(Color.white.opacity(0.09), lineWidth: 1)
+                    .frame(width: 210, height: 210)
+
+                // Waveform tick marks + sweep line
+                Canvas { context, size in
+                    let center = CGPoint(x: size.width / 2, y: size.height / 2)
+                    let radius: CGFloat = 96
+                    let count = 72
+
+                    for i in 0..<count {
+                        let angle = (Double(i) / Double(count)) * 2 * .pi - .pi / 2
+                        let level = Double(recorder.audioLevels[i % recorder.audioLevels.count])
+                        let innerR = radius - 4
+                        let outerR = recorder.isRecording
+                            ? radius + level * 28
+                            : radius + 8
+                        let s = CGPoint(x: center.x + cos(angle) * innerR,
+                                        y: center.y + sin(angle) * innerR)
+                        let e = CGPoint(x: center.x + cos(angle) * outerR,
+                                        y: center.y + sin(angle) * outerR)
+                        var p = Path()
+                        p.move(to: s)
+                        p.addLine(to: e)
+                        context.stroke(p, with: .color(Color(hex: "#DAFC79").opacity(0.72)), lineWidth: 1.5)
+                    }
+
+                    // Blue sweep line
+                    let sa = sweepAngle * 2 * .pi - .pi / 2
+                    var sweep = Path()
+                    sweep.move(to: center)
+                    sweep.addLine(to: CGPoint(x: center.x + cos(sa) * radius,
+                                              y: center.y + sin(sa) * radius))
+                    context.stroke(sweep, with: .color(Color(red: 0.25, green: 0.65, blue: 1.0)), lineWidth: 2.5)
+                }
+                .frame(width: 220, height: 220)
+
+                // Lime green center circle
+                Circle()
+                    .fill(accentColor)
+                    .frame(width: 118, height: 118)
+                    .shadow(color: accentColor.opacity(recorder.isRecording ? 0.55 : 0.35), radius: 28)
+
+                // Icon: ↺
+                Image(systemName: "arrow.counterclockwise")
+                    .font(.system(size: 44, weight: .medium))
+                    .foregroundColor(.black)
             }
         }
-        .animation(.easeInOut, value: recorder.isRecording)
-        .animation(.easeInOut, value: showPermissionModal)
+        .buttonStyle(PlainButtonStyle())
+    }
+
+    // MARK: - Recording status badge
+
+    private var recordingBadge: some View {
+        HStack(spacing: 7) {
+            Circle()
+                .fill(Color.red)
+                .frame(width: 8, height: 8)
+                .opacity(recorder.isRecording ? 1 : 0.5)
+            Text(recorder.isRecording
+                 ? "RECORDING · \(formatDuration(recorder.bufferSeconds))"
+                 : "NOT RECORDING")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundColor(.white.opacity(0.7))
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 7)
+        .background(Color.white.opacity(0.08))
+        .clipShape(Capsule())
     }
 
     // MARK: - Actions
 
-    private func startRecording() {
-        if recorder.permissionGranted {
-            Task {
-                do {
-                    try await recorder.startRecording()
-                    HapticsManager.shared.success()
-                } catch {
-                    showError(error.localizedDescription)
-                }
-            }
+    private func handleButtonTap() {
+        if recorder.isRecording {
+            clipAudio()
         } else {
-            showPermissionModal = true
+            startRecording()
         }
     }
 
-    private func stopRecording() {
-        recorder.stopRecording()
-        HapticsManager.shared.medium()
+    private func startRecording() {
+        Task {
+            do {
+                try await recorder.startRecording()
+                HapticsManager.shared.success()
+            } catch {
+                showError(error.localizedDescription)
+            }
+        }
     }
 
     private func clipAudio() {
@@ -167,7 +305,6 @@ struct RecordingView: View {
     private func requestPermission() {
         Task {
             let granted = await recorder.requestPermission()
-            showPermissionModal = false
             if granted {
                 startRecording()
             } else {
@@ -182,28 +319,17 @@ struct RecordingView: View {
         showToast = true
     }
 
-    // MARK: - Helpers
+    private func startSweep() {
+        sweepTimer = Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true) { _ in
+            Task { @MainActor in
+                sweepAngle = fmod(sweepAngle + 0.02, 1.0)
+            }
+        }
+    }
 
     private func formatDuration(_ seconds: Double) -> String {
         let m = Int(seconds) / 60
         let s = Int(seconds) % 60
         return String(format: "%d:%02d", m, s)
-    }
-
-    private var recordingIndicator: some View {
-        HStack(spacing: 6) {
-            Circle()
-                .fill(Color.red)
-                .frame(width: 8, height: 8)
-                .opacity(0.9)
-            Text("REC")
-                .font(.system(size: 12, weight: .bold))
-                .foregroundColor(.red)
-        }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
-        .background(Color.red.opacity(0.1))
-        .clipShape(Capsule())
-        .overlay(Capsule().stroke(Color.red.opacity(0.3), lineWidth: 1))
     }
 }
