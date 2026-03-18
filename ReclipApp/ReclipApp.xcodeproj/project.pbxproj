@@ -7,174 +7,203 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000001000000000000B800 /* ReclipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B801 /* ReclipApp.swift */; };
-		AA000001000000000000B802 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B803 /* ContentView.swift */; };
-		AA000001000000000000B804 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B805 /* AppState.swift */; };
-		AA000001000000000000B806 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B807 /* Contact.swift */; };
-		AA000001000000000000B808 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B809 /* TutorialView.swift */; };
-		AA000001000000000000B80A /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B80B /* RecordingView.swift */; };
-		AA000001000000000000B80C /* MagicMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B80D /* MagicMomentView.swift */; };
-		AA000001000000000000B80E /* ViralTriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B80F /* ViralTriggerView.swift */; };
-		AA000001000000000000B810 /* FriendLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B811 /* FriendLoopView.swift */; };
-		AA000001000000000000B812 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B813 /* OnboardingView.swift */; };
-		AA000001000000000000B814 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B815 /* DoneView.swift */; };
-		AA000001000000000000B816 /* CircularWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B817 /* CircularWaveformView.swift */; };
-		AA000001000000000000B818 /* WaveformTrimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B819 /* WaveformTrimmerView.swift */; };
-		AA000001000000000000B81A /* ClipButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B81B /* ClipButtonView.swift */; };
-		AA000001000000000000B81C /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B81D /* ToastView.swift */; };
-		AA000001000000000000B81E /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B81F /* AudioRecorderManager.swift */; };
-		AA000001000000000000B820 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B821 /* AudioPlayerManager.swift */; };
-		AA000001000000000000B822 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B823 /* HapticsManager.swift */; };
-		AA000001000000000000B824 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B825 /* ColorExtension.swift */; };
-		AA000001000000000000B826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B827 /* Assets.xcassets */; };
-		AA000001000000000000B828 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B829 /* AVFoundation.framework */; };
-		AA000001000000000000B82A /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA000001000000000000B82B /* CoreHaptics.framework */; };
+		BB000002000000000000B800 /* ReclipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B801 /* ReclipApp.swift */; };
+		BB000002000000000000B802 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B803 /* ContentView.swift */; };
+		BB000002000000000000B804 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B805 /* Theme.swift */; };
+		BB000002000000000000B806 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B807 /* AppState.swift */; };
+		BB000002000000000000B808 /* CaptionSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B809 /* CaptionSegment.swift */; };
+		BB000002000000000000B80A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B80B /* Contact.swift */; };
+		BB000002000000000000B80C /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B80D /* HapticsManager.swift */; };
+		BB000002000000000000B80E /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B80F /* AudioEngine.swift */; };
+		BB000002000000000000B810 /* RollingRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B811 /* RollingRecorder.swift */; };
+		BB000002000000000000B812 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B813 /* AudioPlayerManager.swift */; };
+		BB000002000000000000B814 /* ReclipLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B815 /* ReclipLogoView.swift */; };
+		BB000002000000000000B816 /* ContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B817 /* ContinueButton.swift */; };
+		BB000002000000000000B818 /* ProgressDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B819 /* ProgressDots.swift */; };
+		BB000002000000000000B81A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B81B /* ToastView.swift */; };
+		BB000002000000000000B81C /* ErrorPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B81D /* ErrorPill.swift */; };
+		BB000002000000000000B81E /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B81F /* TutorialView.swift */; };
+		BB000002000000000000B820 /* InstantStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B821 /* InstantStartView.swift */; };
+		BB000002000000000000B822 /* MagicMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B823 /* MagicMomentView.swift */; };
+		BB000002000000000000B824 /* ViralTriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B825 /* ViralTriggerView.swift */; };
+		BB000002000000000000B826 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B827 /* OnboardingView.swift */; };
+		BB000002000000000000B828 /* FriendLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B829 /* FriendLoopView.swift */; };
+		BB000002000000000000B82A /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B82B /* DoneView.swift */; };
+		BB000002000000000000B82C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B82D /* Assets.xcassets */; };
+		BB000002000000000000B82E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B82F /* AVFoundation.framework */; };
+		BB000002000000000000B830 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B831 /* CoreHaptics.framework */; };
+		BB000002000000000000B832 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B833 /* Speech.framework */; };
+		BB000002000000000000B834 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B835 /* Contacts.framework */; };
+		BB000002000000000000B836 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB000002000000000000B837 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA000001000000000000B801 /* ReclipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReclipApp.swift; sourceTree = "<group>"; };
-		AA000001000000000000B803 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B805 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		AA000001000000000000B807 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		AA000001000000000000B809 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B80B /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B80D /* MagicMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMomentView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B80F /* ViralTriggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViralTriggerView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B811 /* FriendLoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLoopView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B813 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B815 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B817 /* CircularWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularWaveformView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B819 /* WaveformTrimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformTrimmerView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B81B /* ClipButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipButtonView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B81D /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		AA000001000000000000B81F /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
-		AA000001000000000000B821 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
-		AA000001000000000000B823 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
-		AA000001000000000000B825 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		AA000001000000000000B827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AA000001000000000000B829 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		AA000001000000000000B82B /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
-		AA000001000000000000B82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA000001000000000000B82D /* ReclipApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReclipApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000002000000000000B801 /* ReclipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReclipApp.swift; sourceTree = "<group>"; };
+		BB000002000000000000B803 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B805 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BB000002000000000000B807 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		BB000002000000000000B809 /* CaptionSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionSegment.swift; sourceTree = "<group>"; };
+		BB000002000000000000B80B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		BB000002000000000000B80D /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		BB000002000000000000B80F /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		BB000002000000000000B811 /* RollingRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingRecorder.swift; sourceTree = "<group>"; };
+		BB000002000000000000B813 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		BB000002000000000000B815 /* ReclipLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReclipLogoView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B817 /* ContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButton.swift; sourceTree = "<group>"; };
+		BB000002000000000000B819 /* ProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDots.swift; sourceTree = "<group>"; };
+		BB000002000000000000B81B /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B81D /* ErrorPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPill.swift; sourceTree = "<group>"; };
+		BB000002000000000000B81F /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B821 /* InstantStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantStartView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B823 /* MagicMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMomentView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B825 /* ViralTriggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViralTriggerView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B827 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B829 /* FriendLoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLoopView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B82B /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
+		BB000002000000000000B82D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB000002000000000000B82F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BB000002000000000000B831 /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		BB000002000000000000B833 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		BB000002000000000000B835 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		BB000002000000000000B837 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		BB000002000000000000B838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB000002000000000000B839 /* ReclipApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReclipApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA000001000000000000B830 /* Frameworks */ = {
+		BB000002000000000000B840 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000001000000000000B828 /* AVFoundation.framework in Frameworks */,
-				AA000001000000000000B82A /* CoreHaptics.framework in Frameworks */,
+				BB000002000000000000B82E /* AVFoundation.framework in Frameworks */,
+				BB000002000000000000B830 /* CoreHaptics.framework in Frameworks */,
+				BB000002000000000000B832 /* Speech.framework in Frameworks */,
+				BB000002000000000000B834 /* Contacts.framework in Frameworks */,
+				BB000002000000000000B836 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA000001000000000000B831 /* ReclipApp */ = {
+		BB000002000000000000B850 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA000001000000000000B801 /* ReclipApp.swift */,
-				AA000001000000000000B803 /* ContentView.swift */,
-				AA000001000000000000B832 /* Views */,
-				AA000001000000000000B833 /* Components */,
-				AA000001000000000000B834 /* Audio */,
-				AA000001000000000000B835 /* Utilities */,
-				AA000001000000000000B836 /* Models */,
-				AA000001000000000000B827 /* Assets.xcassets */,
-				AA000001000000000000B82C /* Info.plist */,
-			);
-			path = ReclipApp;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B832 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B809 /* TutorialView.swift */,
-				AA000001000000000000B80B /* RecordingView.swift */,
-				AA000001000000000000B80D /* MagicMomentView.swift */,
-				AA000001000000000000B80F /* ViralTriggerView.swift */,
-				AA000001000000000000B811 /* FriendLoopView.swift */,
-				AA000001000000000000B813 /* OnboardingView.swift */,
-				AA000001000000000000B815 /* DoneView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B833 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B817 /* CircularWaveformView.swift */,
-				AA000001000000000000B819 /* WaveformTrimmerView.swift */,
-				AA000001000000000000B81B /* ClipButtonView.swift */,
-				AA000001000000000000B81D /* ToastView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B834 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B81F /* AudioRecorderManager.swift */,
-				AA000001000000000000B821 /* AudioPlayerManager.swift */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B835 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B823 /* HapticsManager.swift */,
-				AA000001000000000000B825 /* ColorExtension.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B836 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B805 /* AppState.swift */,
-				AA000001000000000000B807 /* Contact.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B837 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B829 /* AVFoundation.framework */,
-				AA000001000000000000B82B /* CoreHaptics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AA000001000000000000B838 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000B82D /* ReclipApp.app */,
+				BB000002000000000000B839 /* ReclipApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA000001000000000000B839 = {
+		BB000002000000000000B851 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA000001000000000000B831 /* ReclipApp */,
-				AA000001000000000000B837 /* Frameworks */,
-				AA000001000000000000B838 /* Products */,
+				BB000002000000000000B82F /* AVFoundation.framework */,
+				BB000002000000000000B831 /* CoreHaptics.framework */,
+				BB000002000000000000B833 /* Speech.framework */,
+				BB000002000000000000B835 /* Contacts.framework */,
+				BB000002000000000000B837 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B852 /* ReclipApp */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B801 /* ReclipApp.swift */,
+				BB000002000000000000B803 /* ContentView.swift */,
+				BB000002000000000000B853 /* DesignSystem */,
+				BB000002000000000000B854 /* Models */,
+				BB000002000000000000B855 /* Audio */,
+				BB000002000000000000B856 /* Haptics */,
+				BB000002000000000000B857 /* Components */,
+				BB000002000000000000B858 /* Screens */,
+				BB000002000000000000B82D /* Assets.xcassets */,
+				BB000002000000000000B838 /* Info.plist */,
+			);
+			path = ReclipApp;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B853 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B805 /* Theme.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B854 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B807 /* AppState.swift */,
+				BB000002000000000000B809 /* CaptionSegment.swift */,
+				BB000002000000000000B80B /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B855 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B80F /* AudioEngine.swift */,
+				BB000002000000000000B811 /* RollingRecorder.swift */,
+				BB000002000000000000B813 /* AudioPlayerManager.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B856 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B80D /* HapticsManager.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B857 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B815 /* ReclipLogoView.swift */,
+				BB000002000000000000B817 /* ContinueButton.swift */,
+				BB000002000000000000B819 /* ProgressDots.swift */,
+				BB000002000000000000B81B /* ToastView.swift */,
+				BB000002000000000000B81D /* ErrorPill.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B858 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B81F /* TutorialView.swift */,
+				BB000002000000000000B821 /* InstantStartView.swift */,
+				BB000002000000000000B823 /* MagicMomentView.swift */,
+				BB000002000000000000B825 /* ViralTriggerView.swift */,
+				BB000002000000000000B827 /* OnboardingView.swift */,
+				BB000002000000000000B829 /* FriendLoopView.swift */,
+				BB000002000000000000B82B /* DoneView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		BB000002000000000000B860 = {
+			isa = PBXGroup;
+			children = (
+				BB000002000000000000B852 /* ReclipApp */,
+				BB000002000000000000B850 /* Products */,
+				BB000002000000000000B851 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA000001000000000000B840 /* ReclipApp */ = {
+		BB000002000000000000B861 /* ReclipApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA000001000000000000B841 /* Build configuration list for PBXNativeTarget "ReclipApp" */;
+			buildConfigurationList = BB000002000000000000B870;
 			buildPhases = (
-				AA000001000000000000B850 /* Sources */,
-				AA000001000000000000B830 /* Frameworks */,
-				AA000001000000000000B851 /* Resources */,
+				BB000002000000000000B862 /* Sources */,
+				BB000002000000000000B840 /* Frameworks */,
+				BB000002000000000000B863 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -182,25 +211,25 @@
 			);
 			name = ReclipApp;
 			productName = ReclipApp;
-			productReference = AA000001000000000000B82D /* ReclipApp.app */;
+			productReference = BB000002000000000000B839 /* ReclipApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AA000001000000000000B860 /* Project object */ = {
+		BB000002000000000000B864 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					AA000001000000000000B840 = {
+					BB000002000000000000B861 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = AA000001000000000000B861 /* Build configuration list for PBXProject "ReclipApp" */;
+			buildConfigurationList = BB000002000000000000B871;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -208,62 +237,66 @@
 				en,
 				Base,
 			);
-			mainGroup = AA000001000000000000B839;
-			productRefGroup = AA000001000000000000B838 /* Products */;
+			mainGroup = BB000002000000000000B860;
+			productRefGroup = BB000002000000000000B850 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA000001000000000000B840 /* ReclipApp */,
+				BB000002000000000000B861 /* ReclipApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AA000001000000000000B851 /* Resources */ = {
+		BB000002000000000000B863 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000001000000000000B826 /* Assets.xcassets in Resources */,
+				BB000002000000000000B82C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AA000001000000000000B850 /* Sources */ = {
+		BB000002000000000000B862 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000001000000000000B800 /* ReclipApp.swift in Sources */,
-				AA000001000000000000B802 /* ContentView.swift in Sources */,
-				AA000001000000000000B804 /* AppState.swift in Sources */,
-				AA000001000000000000B806 /* Contact.swift in Sources */,
-				AA000001000000000000B808 /* TutorialView.swift in Sources */,
-				AA000001000000000000B80A /* RecordingView.swift in Sources */,
-				AA000001000000000000B80C /* MagicMomentView.swift in Sources */,
-				AA000001000000000000B80E /* ViralTriggerView.swift in Sources */,
-				AA000001000000000000B810 /* FriendLoopView.swift in Sources */,
-				AA000001000000000000B812 /* OnboardingView.swift in Sources */,
-				AA000001000000000000B814 /* DoneView.swift in Sources */,
-				AA000001000000000000B816 /* CircularWaveformView.swift in Sources */,
-				AA000001000000000000B818 /* WaveformTrimmerView.swift in Sources */,
-				AA000001000000000000B81A /* ClipButtonView.swift in Sources */,
-				AA000001000000000000B81C /* ToastView.swift in Sources */,
-				AA000001000000000000B81E /* AudioRecorderManager.swift in Sources */,
-				AA000001000000000000B820 /* AudioPlayerManager.swift in Sources */,
-				AA000001000000000000B822 /* HapticsManager.swift in Sources */,
-				AA000001000000000000B824 /* ColorExtension.swift in Sources */,
+				BB000002000000000000B800 /* ReclipApp.swift in Sources */,
+				BB000002000000000000B802 /* ContentView.swift in Sources */,
+				BB000002000000000000B804 /* Theme.swift in Sources */,
+				BB000002000000000000B806 /* AppState.swift in Sources */,
+				BB000002000000000000B808 /* CaptionSegment.swift in Sources */,
+				BB000002000000000000B80A /* Contact.swift in Sources */,
+				BB000002000000000000B80C /* HapticsManager.swift in Sources */,
+				BB000002000000000000B80E /* AudioEngine.swift in Sources */,
+				BB000002000000000000B810 /* RollingRecorder.swift in Sources */,
+				BB000002000000000000B812 /* AudioPlayerManager.swift in Sources */,
+				BB000002000000000000B814 /* ReclipLogoView.swift in Sources */,
+				BB000002000000000000B816 /* ContinueButton.swift in Sources */,
+				BB000002000000000000B818 /* ProgressDots.swift in Sources */,
+				BB000002000000000000B81A /* ToastView.swift in Sources */,
+				BB000002000000000000B81C /* ErrorPill.swift in Sources */,
+				BB000002000000000000B81E /* TutorialView.swift in Sources */,
+				BB000002000000000000B820 /* InstantStartView.swift in Sources */,
+				BB000002000000000000B822 /* MagicMomentView.swift in Sources */,
+				BB000002000000000000B824 /* ViralTriggerView.swift in Sources */,
+				BB000002000000000000B826 /* OnboardingView.swift in Sources */,
+				BB000002000000000000B828 /* FriendLoopView.swift in Sources */,
+				BB000002000000000000B82A /* DoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		AA000001000000000000B862 /* Debug */ = {
+		BB000002000000000000B872 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -282,7 +315,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_CYCLE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
@@ -296,8 +329,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -316,16 +348,17 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		AA000001000000000000B863 /* Release */ = {
+		BB000002000000000000B873 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -344,7 +377,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_CYCLE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
@@ -358,8 +391,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -376,78 +408,69 @@
 			};
 			name = Release;
 		};
-		AA000001000000000000B864 /* Debug */ = {
+		BB000002000000000000B874 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ReclipApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.reclip.ReclipApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reclip.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		AA000001000000000000B865 /* Release */ = {
+		BB000002000000000000B875 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ReclipApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.reclip.ReclipApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reclip.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA000001000000000000B861 /* Build configuration list for PBXProject "ReclipApp" */ = {
+		BB000002000000000000B870 /* Build configuration list for PBXNativeTarget "ReclipApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA000001000000000000B862 /* Debug */,
-				AA000001000000000000B863 /* Release */,
+				BB000002000000000000B874 /* Debug */,
+				BB000002000000000000B875 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA000001000000000000B841 /* Build configuration list for PBXNativeTarget "ReclipApp" */ = {
+		BB000002000000000000B871 /* Build configuration list for PBXProject "ReclipApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA000001000000000000B864 /* Debug */,
-				AA000001000000000000B865 /* Release */,
+				BB000002000000000000B872 /* Debug */,
+				BB000002000000000000B873 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
 	};
-	rootObject = AA000001000000000000B860 /* Project object */;
+	rootObject = BB000002000000000000B864 /* Project object */;
 }

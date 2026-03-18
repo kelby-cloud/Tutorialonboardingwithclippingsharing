@@ -1,79 +1,111 @@
+// ContentView.swift
+// ReclipApp
+//
+// Root navigation coordinator — switches between top-level screens
+// based on AppState.currentScreen with a cross-fade / slide transition.
+
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
-    @StateObject private var recorder = AudioRecorderManager()
-    @State private var currentScreen: AppScreen = .tutorial
-    @State private var audioURL: URL?
-    @State private var captions: [CaptionSegment] = []
+
+    // MARK: Environment
+
+    @EnvironmentObject private var appState: AppState
+
+    // MARK: Body
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            // Background — always black so transitions don't flash
+            Theme.Colors.background
+                .ignoresSafeArea()
 
-            screenView
-                .transition(.asymmetric(
-                    insertion: .move(edge: .trailing).combined(with: .opacity),
-                    removal: .move(edge: .leading).combined(with: .opacity)
-                ))
-                .id(currentScreen)
+            // Screen switcher
+            screenView(for: appState.currentScreen)
+                .id(appState.currentScreen)   // force view identity reset on screen change
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .trailing).combined(with: .opacity),
+                        removal:   .move(edge: .leading).combined(with: .opacity)
+                    )
+                )
         }
-        .animation(.easeInOut(duration: 0.35), value: currentScreen)
-        .preferredColorScheme(.dark)
+        .animation(.easeInOut(duration: 0.30), value: appState.currentScreen)
+        // Toast overlay on top of everything
+        .overlay(alignment: .top) {
+            if appState.isShowingToast {
+                ToastView(
+                    isShowing: $appState.isShowingToast,
+                    message:   appState.toastMessage
+                )
+            }
+        }
     }
 
+    // MARK: Screen Router
+
     @ViewBuilder
-    private var screenView: some View {
-        switch currentScreen {
+    private func screenView(for screen: AppScreen) -> some View {
+        switch screen {
         case .tutorial:
             TutorialView {
-                navigate(to: .recording)
+                appState.navigate(to: .start)
             }
 
-        case .recording:
-            RecordingView(recorder: recorder) { url, captionData in
-                self.audioURL = url
-                self.captions = captionData
-                navigate(to: .magicMoment)
-            }
+        case .start:
+            InstantStartView(onClipSaved: { audioURL, captions in
+                appState.navigate(to: .magic(audioURL: audioURL, captions: captions))
+            })
 
-        case .magicMoment:
-            MagicMomentView(audioURL: audioURL, recorder: recorder) { trimmedURL in
-                if let url = trimmedURL {
-                    self.audioURL = url
-                    navigate(to: .viralTrigger)
-                } else {
-                    // Re-record
-                    navigate(to: .recording)
+        case let .magic(audioURL, captions):
+            MagicMomentView(
+                audioURL: audioURL,
+                captions: captions,
+                onShare: { url, caps in
+                    appState.navigate(to: .viral(audioURL: url, captions: caps))
+                },
+                onBack: {
+                    appState.navigate(to: .start)
                 }
-            }
+            )
 
-        case .viralTrigger:
-            ViralTriggerView(audioURL: audioURL) {
-                navigate(to: .onboarding)
-            }
+        case let .viral(audioURL, captions):
+            ViralTriggerView(
+                audioURL: audioURL,
+                captions: captions,
+                onJoin: {
+                    appState.navigate(to: .onboarding)
+                }
+            )
 
         case .onboarding:
             OnboardingView {
-                navigate(to: .friendLoop)
+                appState.navigate(to: .friends)
             }
 
-        case .friendLoop:
+        case .friends:
             FriendLoopView {
-                navigate(to: .done)
+                appState.navigate(to: .done)
             }
 
         case .done:
             DoneView {
-                audioURL = nil
-                captions = []
-                navigate(to: .tutorial)
+                appState.navigate(to: .tutorial)
             }
         }
     }
+}
 
-    private func navigate(to screen: AppScreen) {
-        withAnimation(.easeInOut(duration: 0.35)) {
-            currentScreen = screen
-        }
+// MARK: - Previews
+
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(AppState())
+            .environmentObject(AudioEngine.shared)
     }
 }
+#endif
